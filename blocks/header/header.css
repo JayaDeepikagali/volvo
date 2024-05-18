@@ -1,9 +1,11 @@
-/* header and nav layout */
+/* Header and nav layout */
 header .nav-wrapper {
   background-color: var(--background-color);
   width: 100%;
   z-index: 2;
   position: fixed;
+  /* Adding background color */
+  background-image: url('https://www.transparenttextures.com/patterns/brick-wall.png');
 }
 
 header nav {
@@ -19,6 +21,7 @@ header nav {
   height: var(--nav-height);
   padding: 0 1rem;
   font-family: var(--body-font-family);
+  position: relative; /* Adding relative positioning for snow animation */
 }
 
 header nav[aria-expanded="true"] {
@@ -28,6 +31,36 @@ header nav[aria-expanded="true"] {
     'tools tools' var(--nav-height) / auto 1fr;
   overflow-y: auto;
   min-height: 100vh;
+}
+
+/* Snow Animation */
+.snowflakes {
+  position: absolute;
+  top: -50px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Adding snowflakes */
+.snowflake {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  border-radius: 50%;
+  animation: falling linear infinite;
+}
+
+/* Adding animation keyframes for falling snow */
+@keyframes falling {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
 }
 
 @media (width >= 600px) {
@@ -57,13 +90,16 @@ header nav a:any-link {
   color: currentcolor;
 }
 
-/* hamburger */
+/* Hamburger */
 header nav .nav-hamburger {
   grid-area: hamburger;
   height: 22px;
   display: flex;
   align-items: center;
 }
+
+/* Rest of the styles remain unchanged */
+
 
 header nav .nav-hamburger button {
   height: 22px;
